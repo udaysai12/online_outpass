@@ -1,0 +1,70 @@
+.table {
+    margin: 1em 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+tr {
+    width: 100%;
+    height: 50px;
+}
+
+td {
+    text-align: center;
+}
+
+iframe {
+    height: 1000px;
+    width: 800px;
+}
+
+.proof-letter {
+    margin-bottom: 5em;
+}
+
+.submit-button {
+    text-align: center;
+    text-decoration: none;
+    padding: 1em 2em;
+}
+
+.input-space {
+    text-align: center;
+}
+
+.selection-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttons {
+    text-align: center;
+    text-decoration: none;
+    padding: 1em 2em;
+    color: white;
+    margin: 3em 1em;
+    border-radius: 5px;
+}
+
+.accept-button {
+    background-color: green;
+    border: 2px solid green;
+}
+
+.reject-button {
+    background-color: red;
+    border: 2px solid red;
+}
+
+.accept-button:hover {
+    background-color: rgb(80, 224, 80);
+}
+
+.reject-button:hover {
+    background-color: rgb(230, 81, 81);
+}

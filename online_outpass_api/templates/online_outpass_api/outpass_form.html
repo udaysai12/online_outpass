@@ -1,0 +1,196 @@
+{% extends 'online_outpass_api/common_layout.html' %}
+{% load static %}
+
+{% block body %}
+	<!--main css-->
+    <link rel="stylesheet" href="{% static 'css/outpass_form.css' %}">
+	<style>
+		.border-all , .bottom-border {
+			font-family: 'Courier New', Courier, monospace;
+		}
+	</style>
+</head>
+<body>
+	<!--header-->
+    <div class="heading">
+        <h1>
+            RGUKT <br> SRIKAKULAM
+        </h1>
+    </div>
+
+	<!--broke screen-->
+    <div class="adjustment">
+		<!--logo-->
+        <div class="logo">
+			<img src="{% static 'images/main_logo_rgukt.jpg' %}" alt="image not found">
+		</div>
+
+		<!--total outpass form-->
+		<div class="outpass-form-wrapper">
+			<form action="/onlineoutpass/outpassform" method="post" enctype="multipart/form-data">
+				{% csrf_token %}
+				<!--name-->
+				<div class="input-space">
+					<div class="one-em-space">
+						<input type="text" name="studentname" class="bottom-border" placeholder="Enter your name" required>
+					</div>
+				</div>
+
+				<!--ID NO.-->
+				<div class="input-space">
+					<div class="one-em-space">
+						<input type="text" name="sklmid" class="bottom-border" placeholder="College ID" required>
+					</div>
+				</div>
+
+				<!--mail-->
+				<div class="input-space">
+					<div class="one-em-space">
+						<input type="email" name="email" class="bottom-border" placeholder="Enter your college mail" required>
+					</div>
+				</div>
+
+				<!--student phone number-->
+				<div class="input-space">
+					<div class="one-em-space">
+						<input type="number" name="studentph" class="bottom-border" placeholder="Enter your phone number" required>
+					</div>
+				</div>
+
+				<!--parent name-->
+				<div class="input-space">
+					<div class="one-em-space">
+						<input type="text" name="parentname" class="bottom-border" placeholder="Enter your parent/gaurdian name" required>
+					</div>
+				</div>
+
+				<!--parent phone number-->
+				<div class="input-space">
+					<div class="one-em-space">
+						<input type="number" name="parentph" class="bottom-border" placeholder="Enter your parent/gaurdian phone number" required>
+					</div>
+				</div>
+
+				<!--year list-->
+				<div class="input-space">
+					<div class="one-em-space">
+						<select name="year" class="classes bottom-border" required>
+							<option disabled selected>Enter your year</option>
+							<option value="puc-1">PUC-1</option>
+							<option value="puc-2">PUC-2</option>
+							<option value="engineering-1">ENGINEERING-1</option>
+							<option value="engineering-2">ENGINEERING-2</option>
+							<option value="engineering-3">ENGINEERING-3</option>
+							<option value="engineering-4">ENGINEERING-4</option>
+						</select>
+					</div>
+				</div>
+
+				<!--class-->
+				<div class="input-space">
+					<div class="one-em-space">
+						<select name="rclass" class="bottom-border" id="appendlist" required>
+						<!--js will add it-->	
+						</select>
+					</div>
+				</div>
+
+				<!--out date-->
+				<div class="input-space">
+					<div class="one-em-space">
+						<label for="out-date" class="label">Enter outing date</label>
+						<input type="date" name="outdate" class="bottom-border" id="out-date" required>
+					</div>
+				</div>
+
+				<!--reporting date-->
+				<div class="input-space">
+					<div class="one-em-space">
+						<label for="report-date" class="label">Enter reporting date:</label>
+						<input name="reportingdate" type="date" class="bottom-border" id="report-date" required>
+					</div>
+				</div>
+
+				<!--reason-->
+				<div class="input-space">
+					<div class="one-em-space">
+						<input type="text" name="reason" class="border-all" placeholder="Enter your outpass reason in single line" required>
+					</div>
+				</div>
+
+				<!--address-->
+				<div class="input-space">
+					<div class="one-em-space">
+						<input type="text" name="address" class="border-all" placeholder="Enter your address" required>
+					</div>
+				</div>
+
+				<!--proof letter-->
+				<div class="input-space">
+					<div class="one-em-space">
+						<label for="files">
+							Upload outing letter in .pdf or image format 
+							and if there any proofs for your leave then add both letter and proofs in a pdf file.<br><br>
+							<i style="font-weight: bold;">*File must be in pdf format only.</i>
+						</label>
+						<br><br>
+						<input type="file" name="proofletter" id="files" class="image-background" required>
+					</div>
+				</div>
+
+				{% if message %}
+                	<script type="text/javascript">
+						alert("{{ message }}");
+					</script>
+            	{% endif %}
+				{% if success %}
+				<script type="text/javascript">
+					alert("{{ success }}");
+				</script>
+				{% endif %}
+
+				<!--submit button-->
+				<div class="input-space">
+					<div class="one-em-space" style="text-align: center;">
+						<input type="submit" value="submit" class="submit-button">
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+
+<!--js for handling lists-->
+<script type="text/javascript">
+	//adding branch or puc classes by year
+	var classes = document.querySelector(".classes");
+	const puc = ['B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8', 'B9']
+	const engg = ['CSE', 'ECE', 'EEE', 'MECH', 'CIVIL', 'METALLAURGY', 'CHEMICAL']
+	var cls = document.getElementById("appendlist");
+		
+	classes.addEventListener('click', function (){
+		value = classes.value;
+		//remove nodes
+		while (cls.firstChild){
+			cls.removeChild(cls.firstChild);
+		}
+
+		//adding nodes
+		if((value == "puc-1") || (value == "puc-2")){
+			for(var i=0; i<puc.length; i++){
+				option = document.createElement("option");
+				option.innerHTML = puc[i];
+				option.value = puc[i];
+				cls.appendChild(option);
+			}
+		}else{
+			for(var i=0; i<engg.length; i++){
+				option = document.createElement("option");
+				option.innerHTML = engg[i];
+				option.value = engg[i];
+				cls.appendChild(option);
+			}
+		}
+	});
+</script>
+{% endblock body %}

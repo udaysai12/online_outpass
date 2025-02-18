@@ -1,0 +1,70 @@
+{% extends 'online_outpass_api/common_layout.html' %}
+{% load static %}
+
+{% block body %}
+    <!--main css-->
+    <link rel="stylesheet" href="{% static 'css/admin_page.css' %}">
+</head>
+<body>
+    <!--header-->
+    <div class="heading">
+        <h1>
+            RGUKT <br> SRIKAKULAM
+        </h1>
+    </div>
+
+    <!--heading-->
+    <h3 class="head">
+        -Today Online Outpass Applications-
+    </h3>
+
+    <!--today applications-->
+    <div class="table">
+        <table border="1">
+            <!--main head-->
+            <tr>
+                <th>S.NO</th>
+                <th>Name</th>
+                <th>College ID</th>
+                <th>Out date</th>
+                <th>reason</th>
+                <th id="removable">Reporting date</th>
+                <th id="removable">Student phone number</th>
+                <th>Full Info</th>
+            </tr>
+
+            <!--details-->
+            {% if applications %}
+                {% for application in applications %}
+                    <tr>
+                        <td>{{ application.id }}</td>
+                        <td>{{ application.studentname }}</td>
+                        <td>{{ application.sklmid }}</td>
+                        <td>{{ application.outdate }}</td>
+                        <td>{{ application.reason }}</td>
+                        <td id="removable">{{ application.reportingdate }}</td>
+                        <td id="removable">{{ application.studentph }}</td>
+                        <td>
+                            <a href="/onlineoutpass/detailspage/{{application.id}}" class="submit-button" style="text-decoration: none;color: white;padding: 5px;">VIEW</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <div>No applications yet...</div>
+            {% endif %}
+        </table>
+    </div>
+    
+    <!-- js -->
+    <script>
+       var removable = document.querySelectorAll("#removable");
+       
+       if(screen.width <= 1000){
+         for(var i=0;i<removable.length;i++){
+           removable[i].remove();
+         }
+       }
+       
+    </script>
+</body>
+{% endblock %}

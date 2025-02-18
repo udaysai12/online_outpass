@@ -1,0 +1,53 @@
+first name
+last name
+id no.
+rgukt mail
+student ph no.
+parent name
+parent ph no.
+
+class
+year list
+out date
+reporting date
+reason
+address
+
+letter or any proof
+
+submit
+
+1)outpass keys datebase importing{features}
+2)layouts
+3)div layouts
+4)mail send
+5)pdf convertor
+6)accept pdf id:pk
+
+
+NAME :-..........
+CLASS:-..........
+ID:-............
+REASON:-.......
+TODAY DATE....
+NO.OF.DAYS:-..
+OUTING DATE:-
+REPORTING DATE
+
+
+adminname = models.CharField(max_length=64)
+    adminpassword = models.CharField(max_length=64)
+    phonenumber = models.CharField(max_length=10)
+    email = models.CharField(max_length=254)
+
+
+        migrations.CreateModel(
+            name='Admins',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('adminname', models.CharField(max_length=64)),
+                ('adminpassword', models.CharField(max_length=64)),
+            ],
+        ),
+
+

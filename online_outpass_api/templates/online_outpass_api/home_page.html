@@ -1,0 +1,58 @@
+{% extends 'online_outpass_api/common_layout.html' %}
+{% load static %}
+
+{% block body %}
+    <!--main css-->
+    <link rel="stylesheet" href="{% static 'css/home_page.css' %}">
+</head>
+<body>
+    <!--header-->
+    <div class="heading">
+        <h1>
+            RGUKT <br> SRIKAKULAM
+        </h1>
+    </div>
+    
+    <div class="laptop-adjust">
+        <!--logo-->
+        <div class="logo">
+            <a href="https://rguktsklm.ac.in/"><img src="{% static 'images/main_logo_rgukt.jpg' %}" class="size" alt=""></a>
+        </div>
+
+        <div class="column">
+            <!--get outpass-->
+            <div class="get-outpass">
+                <a href="/onlineoutpass/outpassform" class="button">
+                    GET OUTPASS
+                </a>
+            </div>
+
+            <!--admin login-->
+            <div class="admin-login">
+                <a href="/onlineoutpass/adminlogin" class="button">
+                    ADMIN LOGIN
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <br><br><br><hr width="100%">
+    <!--contact-->
+    <div class="contact">
+        <div class="contact-head">
+            <h2>contact us</h2>
+        </div>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Mobile number</th>
+            </tr>
+            <tr>
+                <td>dummy</td>
+                <td>1234567890</td>
+            </tr>
+        </table>
+    </div>
+    <br><br><br>
+</body>
+{% endblock %}

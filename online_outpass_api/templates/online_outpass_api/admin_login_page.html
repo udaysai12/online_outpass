@@ -1,0 +1,53 @@
+{% extends 'online_outpass_api/common_layout.html' %}
+{% load static %}
+
+{% block body %}
+    <!--main css-->
+    <link rel="stylesheet" href="{% static 'css/admin_login_page.css' %}">
+</head>
+<body>
+    <!--header-->
+    <div class="heading">
+        <h1>
+            RGUKT <br> SRIKAKULAM
+        </h1>
+    </div>
+
+    <div class="broke-screen-by-width">
+        <!--logo-->
+        <div class="logo">
+            <img src="{% static 'images/main_logo_rgukt.jpg' %}" class="size" alt="image not found...">
+        </div>
+
+        <!--login wrapper-->
+        <div class="wrapper">
+            <form action="/onlineoutpass/adminlogin" method="post">
+                {% csrf_token %}
+                <div class="login">
+                    <!--username-->
+                    <div class="admin-name">
+                        <div class="input-space">
+                            <input type="text" class="box" name="adminname" placeholder="admin name">
+                        </div>
+                    </div>
+
+                    <!--password-->
+                    <div class="admin-password">
+                        <div class="input-space">
+                            <input type="text" class="box" name="adminpassword" placeholder="admin password">
+                        </div>
+                    </div>
+
+                    <!--login button-->
+                    <div class="input-space">
+                        <input type="submit" class="submit-button" value="LOGIN">
+                    </div>
+                </div>
+            </form>
+            {% if message %}
+                <div style="color: red;">{{ message }}</div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+{% endblock %}

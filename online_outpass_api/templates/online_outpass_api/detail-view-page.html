@@ -1,0 +1,90 @@
+{% extends 'online_outpass_api/common_layout.html' %}
+{% load static %}
+
+{% block body %}
+    <!--main css-->
+    <link rel="stylesheet" href="{% static 'css/details-view-page.css' %}">
+</head>
+<body>
+    <!--logo-->
+    <div class="logo">
+        <img src="{% static 'images/main_logo_rgukt.jpg' %}" alt="image not found">
+    </div>
+    
+    <!--details of the apllication-->
+    <div class="table">
+        <table>
+            <tr>
+                <th>Name</th>
+                <td>{{ applicant.studentname }}</td>
+            </tr>
+            <tr>
+                <th>College ID</th>
+                <td>{{ applicant.sklmid }}</td>
+            </tr>
+            <tr>
+                <th>rgukt mail</th>
+                <td>{{ applicant.email }}</td>
+            </tr>
+            <tr>
+                <th>student ph no.</th>
+                <td>{{ applicant.studentph }}</td>
+            </tr>
+            <tr>
+                <th>parent name</th>
+                <td>{{ applicant.parentname }}</td>
+            </tr>
+            <tr>
+                <th>parent phone number</th>
+                <td>{{ applicant.parentph }}</td>
+            </tr>
+            <tr>
+                <th>class</th>
+                <td>{{ applicant.rclass }}</td>
+            </tr>
+            <tr>
+                <th>year</th>
+                <td>{{ applicant.year }}</td>
+            </tr>
+            <tr>
+                <th>out date</th>
+                <td>{{ applicant.outdate }}</td>
+            </tr>
+            <tr>
+                <th>Reporting date</th>
+                <td>{{ applicant.reportingdate }}</td>
+            </tr>
+            <tr>
+                <th>reason</th>
+                <td>{{ applicant.reason }}</td>
+            </tr>
+            <tr>
+                <th>address</th>
+                <td>{{ applicant.address }}</td>
+            </tr>
+        </table>
+
+        <!--letter-->
+        <div class="proof-letter"> 
+            <iframe src="{{applicant.proofletter.url}}#toolbar=0" frameborder="0"></iframe>
+        </div>
+    </div>
+
+    <!--selection-->
+    <div class="selection-buttons">
+        <form style="margin-bottom: 5em;" action="#" method="post">
+            {% csrf_token %}
+            <a value="accept" name="submit" href="mailto:{{applicant.email}}?subject=Your request Accepted&body={{accepted}}" class="buttons accept-button">Accept</a>
+            <a value="reject" name="submit" href="mailto:{{applicant.email}}?subject=Your request Rejected&body={{rejected}}" class="buttons reject-button">Reject</a>
+        </form>
+    </div>
+
+    <!--back button-->
+    <div class="input-space">
+        <a href="/onlineoutpass/adminpage" class="submit-button">
+            Back
+        </a>
+    </div>
+    <br><br><br>
+</body>
+{% endblock %}

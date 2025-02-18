@@ -1,0 +1,19 @@
+hello, friends... welcome to ...
+
+in this session i am going to cover basics python and meaning coding , if you are new to this channel please share , like and if you like this channel please subscribe...
+
+let's start the session without lag.
+
+before starting python you have to know about what is coding and basics of coding.
+
+firstly, what is coding?
+	Coding is like a communication language , which sends human instructions to computers , this coding data is sent to hardware level as 01's which is machine language. Machine can understand only 01 , 0 means False and 1 means True. the code which is written changed into machine language and it is understood by computers. 
+	in coding we have different levels of languages, we use high level programming language which can be understood by humans. in low level language , the function names and the syntax of code is understood by humans.
+	so for this we use high level language and in this there are so many languages
+		python, ruby, html, php, perl, R, java , c , c#, c++, etc
+	
+i think now you understood what is coding.
+
+now lets see basics of coding
+
+https://www.coursera.org/learn/python-crash-course/lecture/QrGvZ/the-beginning-of-your-programming-journey

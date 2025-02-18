@@ -1,0 +1,14 @@
+label {
+    color: red;
+    text-align: left;
+}
+
+.submit-button {
+    height: 50px;
+    width: 100px;
+}
+
+.adjustment {
+    display: flex;
+    flex-direction: column;
+}
